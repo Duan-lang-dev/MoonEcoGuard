@@ -24,4 +24,3 @@ description = "Pure MoonBit toolkit for Darwin Core biodiversity data validation
 import {
   "moonbitlang/x@0.4.50",
 }
-
