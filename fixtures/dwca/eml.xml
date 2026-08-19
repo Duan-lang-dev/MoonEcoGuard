@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml packageId="moonecoguard-demo" system="MoonEcoGuard" xmlns:eml="eml://ecoinformatics.org/eml-2.1.1">
+  <dataset>
+    <title>MoonEcoGuard Demo Biodiversity Survey</title>
+    <abstract>
+      <para>Small demonstration dataset for Darwin Core-style occurrence validation and sensitive coordinate protection.</para>
+    </abstract>
+    <creator>
+      <individualName>
+        <surName>Duan-lang-dev</surName>
+      </individualName>
+      <electronicMailAddress>956327105@qq.com</electronicMailAddress>
+    </creator>
+  </dataset>
+</eml:eml>

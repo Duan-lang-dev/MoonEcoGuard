@@ -1,0 +1,3 @@
+occurrenceID,scientificName,eventDate,decimalLatitude,decimalLongitude
+OBS-DWCA-001,Cathaya argyrophylla,2026-05-12,26.123456,108.567890
+OBS-DWCA-002,Ailuropoda melanoleuca,2026-05-13,31.482100,104.923100
