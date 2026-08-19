@@ -1,0 +1,25 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/ecodata"
+
+import {
+  "Duan-lang-dev/moonecoguard/csv_reader",
+  "Duan-lang-dev/moonecoguard/darwincore",
+}
+
+// Values
+pub fn from_table(@csv_reader.CsvTable) -> @darwincore.Dataset
+
+pub fn read_csv(Bytes) -> @darwincore.Dataset
+
+pub fn read_csv_string(String) -> @darwincore.Dataset
+
+pub fn read_tsv_string(String) -> @darwincore.Dataset
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

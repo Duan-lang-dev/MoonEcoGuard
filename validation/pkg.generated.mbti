@@ -1,0 +1,56 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/validation"
+
+import {
+  "Duan-lang-dev/moonecoguard/darwincore",
+  "Duan-lang-dev/moonecoguard/geospatial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn default_rules() -> ValidationRules
+
+pub fn validate(@darwincore.Dataset, rules? : ValidationRules) -> ValidationReport
+
+pub fn validate_occurrence(@darwincore.OccurrenceRecord, rules? : ValidationRules) -> Array[Diagnostic]
+
+// Errors
+
+// Types and methods
+pub(all) struct Diagnostic {
+  code : String
+  severity : Severity
+  occurrence_id : String?
+  field : String?
+  message : String
+  suggestion : String?
+} derive(Eq, @debug.Debug)
+
+pub(all) enum Severity {
+  Info
+  Warning
+  Error
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ValidationReport {
+  record_count : Int
+  valid_count : Int
+  warning_count : Int
+  error_count : Int
+  diagnostics : Array[Diagnostic]
+} derive(Eq, @debug.Debug)
+pub fn ValidationReport::is_valid(Self) -> Bool
+
+pub(all) struct ValidationRules {
+  required_occurrence_id : Bool
+  required_scientific_name : Bool
+  require_event_ids_to_exist : Bool
+  sensitive_taxa : Array[String]
+  max_individual_count : Int
+  coordinate_bounds : @geospatial.Bounds?
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

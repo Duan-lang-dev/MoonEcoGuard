@@ -1,0 +1,33 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/csv_reader"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn parse(String, delimiter? : Delimiter) -> CsvTable
+
+pub fn parse_tsv(String) -> CsvTable
+
+// Errors
+
+// Types and methods
+pub(all) struct CsvTable {
+  headers : Array[String]
+  rows : Array[Array[String]]
+  delimiter : Delimiter
+} derive(Eq, @debug.Debug)
+pub fn CsvTable::cell(Self, Array[String], String) -> String?
+pub fn CsvTable::header_index(Self, String) -> Int?
+pub fn CsvTable::shape(Self) -> (Int, Int)
+
+pub(all) enum Delimiter {
+  Comma
+  Tab
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

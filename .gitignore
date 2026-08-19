@@ -1,0 +1,5 @@
+_build/
+.mooncakes/
+*.zip
+*.dwca.zip
+.DS_Store

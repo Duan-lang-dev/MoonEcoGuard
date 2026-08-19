@@ -1,0 +1,96 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/darwincore"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn empty_dataset() -> Dataset
+
+pub fn occurrence(String, String, latitude? : Double, longitude? : Double, event_date? : String, event_id? : String, vernacular_name? : String, individual_count? : Int) -> OccurrenceRecord
+
+// Errors
+
+// Types and methods
+pub(all) struct Coordinate {
+  latitude : Double?
+  longitude : Double?
+  uncertainty_meters : Double?
+  verbatim : String?
+} derive(Eq, @debug.Debug)
+pub fn Coordinate::has_decimal(Self) -> Bool
+pub fn Coordinate::is_zero_zero(Self) -> Bool
+
+pub(all) struct Dataset {
+  occurrences : Array[OccurrenceRecord]
+  events : Array[SamplingEvent]
+  locations : Array[LocationRecord]
+  measurements : Array[MeasurementOrFact]
+} derive(Eq, @debug.Debug)
+pub fn Dataset::event_ids(Self) -> Map[String, Unit]
+pub fn Dataset::has_event_id(Self, String) -> Bool
+pub fn Dataset::occurrence_count(Self) -> Int
+
+pub(all) struct LocationRecord {
+  location_id : String
+  name : String
+  latitude : Double?
+  longitude : Double?
+  min_latitude : Double?
+  min_longitude : Double?
+  max_latitude : Double?
+  max_longitude : Double?
+} derive(Eq, @debug.Debug)
+
+pub(all) struct MeasurementOrFact {
+  measurement_id : String
+  occurrence_id : String?
+  event_id : String?
+  measurement_type : String
+  measurement_value : String
+  measurement_unit : String?
+} derive(Eq, @debug.Debug)
+
+pub(all) struct OccurrenceRecord {
+  occurrence_id : String
+  event_id : String?
+  scientific_name : String
+  vernacular_name : String?
+  kingdom : String?
+  phylum : String?
+  class_name : String?
+  order_name : String?
+  family : String?
+  genus : String?
+  specific_epithet : String?
+  taxon_rank : String?
+  event_date : String?
+  individual_count : Int?
+  coordinate : Coordinate
+  locality : String?
+  observer : String?
+  observer_contact : String?
+  basis_of_record : String?
+  occurrence_status : String?
+  remarks : String?
+} derive(Eq, @debug.Debug)
+pub fn OccurrenceRecord::display_name(Self) -> String
+pub fn OccurrenceRecord::has_public_coordinates(Self) -> Bool
+pub fn OccurrenceRecord::taxon_key(Self) -> String
+
+pub(all) struct SamplingEvent {
+  event_id : String
+  parent_event_id : String?
+  event_date : String?
+  end_date : String?
+  locality : String?
+  sampling_protocol : String?
+  sample_size_value : Double?
+  sample_size_unit : String?
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

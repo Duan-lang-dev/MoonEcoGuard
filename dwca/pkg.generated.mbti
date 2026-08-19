@@ -1,0 +1,42 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/dwca"
+
+import {
+  "Duan-lang-dev/moonecoguard/darwincore",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn core_type(String) -> CoreType
+
+pub fn empty_manifest() -> ArchiveManifest
+
+pub fn parse_meta_xml(String) -> ArchiveManifest
+
+pub fn relate_by_event(@darwincore.Dataset) -> Map[String, Array[@darwincore.OccurrenceRecord]]
+
+// Errors
+
+// Types and methods
+pub(all) struct ArchiveFile {
+  row_type : String
+  location : String
+  id_field : String
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ArchiveManifest {
+  core : ArchiveFile?
+  extensions : Array[ArchiveFile]
+} derive(Eq, @debug.Debug)
+
+pub(all) enum CoreType {
+  OccurrenceCore
+  EventCore
+  TaxonCore
+  UnknownCore
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

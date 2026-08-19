@@ -1,0 +1,27 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/taxonomy"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn normalize_scientific_name(String) -> String
+
+pub fn normalize_spaces(String) -> String
+
+pub fn scientific_name_issues(String, String?) -> Array[TaxonomyIssue]
+
+// Errors
+
+// Types and methods
+pub(all) struct TaxonomyIssue {
+  code : String
+  message : String
+  suggestion : String?
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

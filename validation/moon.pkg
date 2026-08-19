@@ -1,0 +1,5 @@
+import {
+  "Duan-lang-dev/moonecoguard/darwincore",
+  "Duan-lang-dev/moonecoguard/geospatial",
+  "Duan-lang-dev/moonecoguard/taxonomy",
+}

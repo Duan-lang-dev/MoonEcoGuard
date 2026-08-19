@@ -1,0 +1,27 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/statistics"
+
+import {
+  "Duan-lang-dev/moonecoguard/darwincore",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn summarize(@darwincore.Dataset, sensitive_taxa? : Array[String]) -> DatasetStats
+
+// Errors
+
+// Types and methods
+pub(all) struct DatasetStats {
+  record_count : Int
+  unique_taxa : Int
+  georeferenced_count : Int
+  zero_zero_count : Int
+  missing_scientific_name_count : Int
+  sensitive_record_count : Int
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,13 @@
+import {
+  "moonbitlang/core/env",
+  "moonbitlang/x/fs",
+  "Duan-lang-dev/moonecoguard/darwincore",
+  "Duan-lang-dev/moonecoguard/ecodata",
+  "Duan-lang-dev/moonecoguard/formats",
+  "Duan-lang-dev/moonecoguard/geospatial",
+  "Duan-lang-dev/moonecoguard/privacy",
+  "Duan-lang-dev/moonecoguard/statistics",
+  "Duan-lang-dev/moonecoguard/validation",
+}
+
+pkgtype(kind: "executable")

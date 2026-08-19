@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/formats"
+
+import {
+  "Duan-lang-dev/moonecoguard/darwincore",
+  "Duan-lang-dev/moonecoguard/statistics",
+  "Duan-lang-dev/moonecoguard/validation",
+}
+
+// Values
+pub fn occurrences_csv(@darwincore.Dataset) -> String
+
+pub fn stats_markdown(@statistics.DatasetStats) -> String
+
+pub fn to_geojson(@darwincore.Dataset) -> String
+
+pub fn to_json(@darwincore.Dataset) -> String
+
+pub fn validation_markdown(@validation.ValidationReport) -> String
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

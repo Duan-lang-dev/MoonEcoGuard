@@ -1,0 +1,12 @@
+{
+  "sensitive_taxa": [
+    "Cathaya argyrophylla",
+    "Ailuropoda melanoleuca",
+    "银杉",
+    "大熊猫",
+    "华南虎"
+  ],
+  "coordinate_policy": "grid",
+  "grid_size_km": 5,
+  "remove_observer_contact": true
+}

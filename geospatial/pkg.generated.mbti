@@ -1,0 +1,41 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/geospatial"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn coordinate_precision_decimals(String) -> Int
+
+pub fn distance_km(Double, Double, Double, Double) -> Double
+
+pub fn grid_center(Double, Double, Double) -> (Double, Double)
+
+pub fn jitter(Double, Double, Double, String) -> (Double, Double)
+
+pub fn maybe_reversed(Double, Double) -> Bool
+
+pub fn round_to_decimals(Double, Int) -> Double
+
+pub fn valid_coordinate(Double, Double) -> Bool
+
+pub fn valid_latitude(Double) -> Bool
+
+pub fn valid_longitude(Double) -> Bool
+
+// Errors
+
+// Types and methods
+pub(all) struct Bounds {
+  min_latitude : Double
+  min_longitude : Double
+  max_latitude : Double
+  max_longitude : Double
+} derive(Eq, @debug.Debug)
+pub fn Bounds::contains(Self, Double, Double) -> Bool
+
+// Type aliases
+
+// Traits
+

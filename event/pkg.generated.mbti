@@ -1,0 +1,18 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/event"
+
+import {
+  "Duan-lang-dev/moonecoguard/darwincore",
+}
+
+// Values
+pub fn sampling_event(String, event_date? : String, locality? : String) -> @darwincore.SamplingEvent
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

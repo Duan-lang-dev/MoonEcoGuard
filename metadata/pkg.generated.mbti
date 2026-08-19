@@ -1,0 +1,27 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/metadata"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn default_metadata() -> ResourceMetadata
+
+pub fn eml_summary(ResourceMetadata) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct ResourceMetadata {
+  title : String
+  abstract_text : String
+  creator : String
+  contact_email : String
+  license : String
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

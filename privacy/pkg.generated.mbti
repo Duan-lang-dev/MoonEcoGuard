@@ -1,0 +1,42 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Duan-lang-dev/moonecoguard/privacy"
+
+import {
+  "Duan-lang-dev/moonecoguard/darwincore",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn default_policy() -> Policy
+
+pub fn grid_policy(Array[String], Double) -> Policy
+
+pub fn policy_from_json(String) -> Policy
+
+pub fn protect(@darwincore.Dataset, Policy) -> @darwincore.Dataset
+
+pub fn protect_occurrence(@darwincore.OccurrenceRecord, Policy) -> @darwincore.OccurrenceRecord
+
+// Errors
+
+// Types and methods
+pub(all) enum CoordinateMode {
+  RoundDecimals(decimals~ : Int)
+  Grid(size_km~ : Double)
+  Jitter(radius_km~ : Double)
+  RegionCenter(latitude~ : Double, longitude~ : Double)
+  RemoveCoordinates
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Policy {
+  sensitive_taxa : Array[String]
+  coordinate_mode : CoordinateMode
+  remove_observer_contact : Bool
+  remove_verbatim_coordinates : Bool
+  redact_private_remarks : Bool
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+
