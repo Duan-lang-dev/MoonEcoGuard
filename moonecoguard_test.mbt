@@ -1,8 +1,8 @@
 ///|
 let sample_csv =
   #|记录编号,物种名称,观察时间,纬度,经度,观察者,联系方式,数量,地点,备注
-  #|OBS-001,Cathaya argyrophylla,2026-05-12,26.123456,108.567890,张三,zhangsan@example.org,3,武夷山样区 A,内部样点编号 A-01
-  #|OBS-002,Ailuropoda melanoleuca,2026-05-13,31.482100,104.923100,李四,13800000000,2,岷山样区,巡护路线附近
+  #|OBS-001,Cathaya argyrophylla,2026-05-12,26.123456,108.567890,观察员-001,observer001@example.org,3,武夷山样区 A,内部样点编号 A-01
+  #|OBS-002,Ailuropoda melanoleuca,2026-05-13,31.482100,104.923100,观察员-002,13800000000,2,岷山样区,巡护路线附近
   #|OBS-003,,2026/05/14,0,0,,unknown@example.org,1,未知地点,
 
 ///|
