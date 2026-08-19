@@ -1,0 +1,7 @@
+occurrenceID,scientificName,eventDate,decimalLatitude,decimalLongitude,recordedBy,observerContact,individualCount,locality,remarks
+OBS-100,Cathaya argyrophylla,2026-05-12,26.123456,108.567890,Zhang San,zhangsan@example.org,3,Wuyishan Plot A,internal plot A-01
+OBS-101,Ailuropoda melanoleuca,2026-05-13,31.482100,104.923100,Li Si,13800000000,2,Minshan Transect,near patrol route
+OBS-102,,2026/05/14,0,0,,unknown@example.org,1,Unknown Site,missing scientific name and zero coordinate
+OBS-103,Panada melanoleuca,2026-05-15,108.5678,26.1234,Wang Wu,,1,Coordinate Swap Demo,possible spelling error and lat/lon reversal
+OBS-104,Prionailurus bengalensis,2026-05-16,91.2,181.1,Zhao Liu,,1,Out Of Range Demo,invalid latitude and longitude
+OBS-100,Cathaya argyrophylla,2026-05-12,26.123456,108.567890,Zhang San,,3,Wuyishan Plot A,duplicate occurrenceID
