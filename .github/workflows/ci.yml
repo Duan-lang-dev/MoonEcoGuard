@@ -6,10 +6,28 @@ on:
 
 jobs:
   moonbit:
+    name: MoonBit check and test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: moonbitlang/setup-moonbit@v1
-      - run: moon check
-      - run: moon test
-      - run: moon fmt --check
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install MoonBit toolchain
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+
+      - name: Show MoonBit versions
+        run: moon version --all
+
+      - name: Install MoonBit dependencies
+        run: moon install
+
+      - name: Check packages
+        run: moon check
+
+      - name: Run tests
+        run: moon test
+
+      - name: Verify formatting
+        run: moon fmt --check
