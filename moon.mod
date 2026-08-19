@@ -20,7 +20,3 @@ keywords = [
 preferred_target = "wasm-gc"
 
 description = "Pure MoonBit toolkit for Darwin Core biodiversity data validation, standardization, statistics and sensitive coordinate protection"
-
-import {
-  "moonbitlang/x@0.4.50",
-}

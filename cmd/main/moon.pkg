@@ -1,6 +1,6 @@
 import {
   "moonbitlang/core/env",
-  "moonbitlang/x/fs",
+  "Duan-lang-dev/moonecoguard/fs_compat" @fs,
   "Duan-lang-dev/moonecoguard/darwincore",
   "Duan-lang-dev/moonecoguard/ecodata",
   "Duan-lang-dev/moonecoguard/formats",

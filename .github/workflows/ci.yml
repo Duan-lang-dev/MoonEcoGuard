@@ -20,8 +20,6 @@ jobs:
       - name: Show MoonBit versions
         run: moon version --all
 
-      - name: Install MoonBit dependencies
-        run: moon install
 
       - name: Check packages
         run: moon check
@@ -31,3 +29,4 @@ jobs:
 
       - name: Verify formatting
         run: moon fmt --check
+
