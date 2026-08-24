@@ -28,4 +28,3 @@ pub fn validation_markdown(@validation.ValidationReport) -> String
 // Type aliases
 
 // Traits
-

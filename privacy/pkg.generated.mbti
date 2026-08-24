@@ -9,6 +9,8 @@ import {
 // Values
 pub fn default_policy() -> Policy
 
+pub fn diff(@darwincore.Dataset, @darwincore.Dataset) -> DatasetDiff
+
 pub fn grid_policy(Array[String], Double) -> Policy
 
 pub fn policy_from_json(String) -> Policy
@@ -16,6 +18,8 @@ pub fn policy_from_json(String) -> Policy
 pub fn protect(@darwincore.Dataset, Policy) -> @darwincore.Dataset
 
 pub fn protect_occurrence(@darwincore.OccurrenceRecord, Policy) -> @darwincore.OccurrenceRecord
+
+pub fn protect_with_summary(@darwincore.Dataset, Policy) -> ProtectionResult
 
 // Errors
 
@@ -28,6 +32,18 @@ pub(all) enum CoordinateMode {
   RemoveCoordinates
 } derive(Eq, @debug.Debug)
 
+pub(all) struct DatasetDiff {
+  private_record_count : Int
+  public_record_count : Int
+  matched_count : Int
+  added_count : Int
+  removed_count : Int
+  coordinate_changed_count : Int
+  coordinate_removed_count : Int
+  observer_contact_changed_count : Int
+  remarks_changed_count : Int
+} derive(Eq, @debug.Debug)
+
 pub(all) struct Policy {
   sensitive_taxa : Array[String]
   coordinate_mode : CoordinateMode
@@ -36,7 +52,20 @@ pub(all) struct Policy {
   redact_private_remarks : Bool
 } derive(Eq, @debug.Debug)
 
+pub(all) struct ProtectionResult {
+  dataset : @darwincore.Dataset
+  summary : ProtectionSummary
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ProtectionSummary {
+  record_count : Int
+  sensitive_record_count : Int
+  coordinate_changed_count : Int
+  coordinate_removed_count : Int
+  observer_contact_removed_count : Int
+  remarks_redacted_count : Int
+} derive(Eq, @debug.Debug)
+
 // Type aliases
 
 // Traits
-

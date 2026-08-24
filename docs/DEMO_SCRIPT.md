@@ -48,4 +48,22 @@ The output can be copied into QGIS, geojson.io or a browser map prototype.
 moon run cmd/main -- diff examples/occurrence.csv public-occurrence.csv
 ```
 
-Expected result: a summary of how many record coordinates changed during protection.
+Expected result: the comparison matches records by `occurrenceID` and reports matched, added, removed, coordinate, contact and remarks changes. It does not compare rows by array position.
+
+Invalid input examples should fail visibly instead of silently falling back:
+
+```powershell
+moon run cmd/main -- geo-check examples/occurrence-errors.csv --bounds invalid
+moon run cmd/main -- protect examples/occurrence.csv --policy missing-policy.json
+```
+
+Expected messages include `Invalid bounds` and `Unable to read policy file`.
+
+## 7. Check a directory-style DwCA fixture
+
+```powershell
+moon run cmd/main -- dwca-check fixtures/dwca
+moon run cmd/main -- dwca-convert fixtures/dwca --format csv
+```
+
+Expected result: `meta.xml` declares an Occurrence core at `occurrence.txt`; the tool reports the mapped field count and converts the two synthetic records to the normalized occurrence CSV format. This is a constrained directory fixture workflow, not complete `.dwca.zip` support.

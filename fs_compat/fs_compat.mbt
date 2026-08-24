@@ -97,7 +97,7 @@ fn string_to_extern(s : String) -> XExternString {
 
 ///|
 fn string_from_extern(e : XExternString) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   let handle = begin_read_string(e)
   while true {
     let ch = string_read_char(handle)

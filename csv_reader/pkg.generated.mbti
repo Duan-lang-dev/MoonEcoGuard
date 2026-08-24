@@ -30,4 +30,3 @@ pub(all) enum Delimiter {
 // Type aliases
 
 // Traits
-

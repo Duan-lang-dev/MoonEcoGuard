@@ -20,12 +20,20 @@ jobs:
       - name: Show MoonBit versions
         run: moon version --all
 
+      - name: Generate package info
+        run: moon info
 
       - name: Check packages
         run: moon check
 
+      - name: Check packages with denied warnings
+        run: moon check --deny-warn
+
       - name: Run tests
         run: moon test
+
+      - name: Run tests with denied warnings
+        run: moon test --deny-warn
 
       - name: Verify formatting
         run: moon fmt --check

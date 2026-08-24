@@ -22,4 +22,3 @@ pub fn read_tsv_string(String) -> @darwincore.Dataset
 // Type aliases
 
 // Traits
-

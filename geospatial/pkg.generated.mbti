@@ -38,4 +38,3 @@ pub fn Bounds::contains(Self, Double, Double) -> Bool
 // Type aliases
 
 // Traits
-

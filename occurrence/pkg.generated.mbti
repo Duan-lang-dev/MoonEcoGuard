@@ -15,4 +15,3 @@ pub fn new_occurrence(String, String, latitude? : Double, longitude? : Double) -
 // Type aliases
 
 // Traits
-

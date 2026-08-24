@@ -13,15 +13,23 @@ pub fn empty_manifest() -> ArchiveManifest
 
 pub fn parse_meta_xml(String) -> ArchiveManifest
 
+pub fn parse_occurrence_text(ArchiveManifest, String) -> @darwincore.Dataset?
+
 pub fn relate_by_event(@darwincore.Dataset) -> Map[String, Array[@darwincore.OccurrenceRecord]]
 
 // Errors
 
 // Types and methods
+pub(all) struct ArchiveField {
+  term : String
+  index : Int
+} derive(Eq, @debug.Debug)
+
 pub(all) struct ArchiveFile {
   row_type : String
   location : String
   id_field : String
+  fields : Array[ArchiveField]
 } derive(Eq, @debug.Debug)
 
 pub(all) struct ArchiveManifest {
@@ -39,4 +47,3 @@ pub(all) enum CoreType {
 // Type aliases
 
 // Traits
-

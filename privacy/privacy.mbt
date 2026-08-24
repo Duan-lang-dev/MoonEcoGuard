@@ -183,20 +183,149 @@ pub fn protect_occurrence(
 }
 
 ///|
+pub(all) struct ProtectionSummary {
+  record_count : Int
+  sensitive_record_count : Int
+  coordinate_changed_count : Int
+  coordinate_removed_count : Int
+  observer_contact_removed_count : Int
+  remarks_redacted_count : Int
+} derive(Eq, Debug)
+
+///|
+pub(all) struct ProtectionResult {
+  dataset : @darwincore.Dataset
+  summary : ProtectionSummary
+} derive(Eq, Debug)
+
+///|
+pub fn protect_with_summary(
+  dataset : @darwincore.Dataset,
+  policy : Policy,
+) -> ProtectionResult {
+  let occurrences : Array[@darwincore.OccurrenceRecord] = []
+  let mut sensitive_record_count = 0
+  let mut coordinate_changed_count = 0
+  let mut coordinate_removed_count = 0
+  let mut observer_contact_removed_count = 0
+  let mut remarks_redacted_count = 0
+  for record in dataset.occurrences {
+    let protected_record = protect_occurrence(record, policy)
+    if sensitive_taxon(policy.sensitive_taxa, record) {
+      sensitive_record_count = sensitive_record_count + 1
+    }
+    if record.coordinate != protected_record.coordinate {
+      coordinate_changed_count = coordinate_changed_count + 1
+    }
+    if record.coordinate.has_decimal() &&
+      !protected_record.coordinate.has_decimal() {
+      coordinate_removed_count = coordinate_removed_count + 1
+    }
+    if record.observer_contact is Some(_) &&
+      protected_record.observer_contact is None {
+      observer_contact_removed_count = observer_contact_removed_count + 1
+    }
+    if record.remarks != protected_record.remarks {
+      remarks_redacted_count = remarks_redacted_count + 1
+    }
+    occurrences.push(protected_record)
+  }
+  {
+    dataset: {
+      occurrences,
+      events: dataset.events,
+      locations: dataset.locations,
+      measurements: dataset.measurements,
+    },
+    summary: {
+      record_count: dataset.occurrences.length(),
+      sensitive_record_count,
+      coordinate_changed_count,
+      coordinate_removed_count,
+      observer_contact_removed_count,
+      remarks_redacted_count,
+    },
+  }
+}
+
+///|
+pub(all) struct DatasetDiff {
+  private_record_count : Int
+  public_record_count : Int
+  matched_count : Int
+  added_count : Int
+  removed_count : Int
+  coordinate_changed_count : Int
+  coordinate_removed_count : Int
+  observer_contact_changed_count : Int
+  remarks_changed_count : Int
+} derive(Eq, Debug)
+
+///|
+pub fn diff(
+  private_dataset : @darwincore.Dataset,
+  public_dataset : @darwincore.Dataset,
+) -> DatasetDiff {
+  let private_ids : Map[String, Unit] = Map([])
+  let public_records : Map[String, @darwincore.OccurrenceRecord] = Map([])
+  for record in private_dataset.occurrences {
+    private_ids[record.occurrence_id] = ()
+  }
+  for record in public_dataset.occurrences {
+    public_records[record.occurrence_id] = record
+  }
+  let mut matched_count = 0
+  let mut removed_count = 0
+  let mut coordinate_changed_count = 0
+  let mut coordinate_removed_count = 0
+  let mut observer_contact_changed_count = 0
+  let mut remarks_changed_count = 0
+  for private_record in private_dataset.occurrences {
+    match public_records.get(private_record.occurrence_id) {
+      None => removed_count = removed_count + 1
+      Some(public_record) => {
+        matched_count = matched_count + 1
+        if private_record.coordinate != public_record.coordinate {
+          coordinate_changed_count = coordinate_changed_count + 1
+        }
+        if private_record.coordinate.has_decimal() &&
+          !public_record.coordinate.has_decimal() {
+          coordinate_removed_count = coordinate_removed_count + 1
+        }
+        if private_record.observer_contact != public_record.observer_contact {
+          observer_contact_changed_count = observer_contact_changed_count + 1
+        }
+        if private_record.remarks != public_record.remarks {
+          remarks_changed_count = remarks_changed_count + 1
+        }
+      }
+    }
+  }
+  let mut added_count = 0
+  for public_record in public_dataset.occurrences {
+    if !private_ids.contains(public_record.occurrence_id) {
+      added_count = added_count + 1
+    }
+  }
+  {
+    private_record_count: private_dataset.occurrences.length(),
+    public_record_count: public_dataset.occurrences.length(),
+    matched_count,
+    added_count,
+    removed_count,
+    coordinate_changed_count,
+    coordinate_removed_count,
+    observer_contact_changed_count,
+    remarks_changed_count,
+  }
+}
+
+///|
 pub fn protect(
   dataset : @darwincore.Dataset,
   policy : Policy,
 ) -> @darwincore.Dataset {
-  let occurrences : Array[@darwincore.OccurrenceRecord] = []
-  for record in dataset.occurrences {
-    occurrences.push(protect_occurrence(record, policy))
-  }
-  {
-    occurrences,
-    events: dataset.events,
-    locations: dataset.locations,
-    measurements: dataset.measurements,
-  }
+  protect_with_summary(dataset, policy).dataset
 }
 
 ///|

@@ -41,7 +41,7 @@ moon run cmd/main -- geo-check examples/occurrence.csv --bounds 20,100,35,120
 - `taxonomy`: local name-format and hierarchy checks.
 - `formats`: Markdown, JSON and GeoJSON renderers.
 - `statistics`: aggregate dataset metrics.
-- `dwca` / `metadata`: first-pass Darwin Core Archive manifest/metadata models.
+- `dwca` / `metadata`: first-pass Darwin Core Archive manifest/metadata models for the checked-in directory fixture; complete `.dwca.zip` processing is not yet claimed.
 
 ## Authorship
 

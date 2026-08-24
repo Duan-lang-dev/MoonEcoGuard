@@ -18,4 +18,3 @@ pub fn location_point(String, String, Double, Double) -> @darwincore.LocationRec
 // Type aliases
 
 // Traits
-

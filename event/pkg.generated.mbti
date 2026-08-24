@@ -15,4 +15,3 @@ pub fn sampling_event(String, event_date? : String, locality? : String) -> @darw
 // Type aliases
 
 // Traits
-
